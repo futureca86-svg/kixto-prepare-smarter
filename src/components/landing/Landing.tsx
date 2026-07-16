@@ -43,9 +43,34 @@ const NAV = [
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
-      <img src={logo.url} alt="Kixto" className="h-9 w-9 rounded-full" />
-      <span className="text-lg font-extrabold tracking-tight text-foreground">KIXTO</span>
+      <img src={logo.url} alt="Kixto" className="h-9 w-9 object-contain" />
+      <Wordmark className="text-lg" />
     </a>
+  );
+}
+
+function Wordmark({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`font-black tracking-[0.18em] leading-none text-foreground ${className}`}
+      aria-label="KIXTO"
+    >
+      K<span className="inline-block">I</span>
+      <span className="brand-gradient-text">X</span>
+      <span className="inline-block">T</span>O
+    </span>
+  );
+}
+
+function Tagline({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`font-bold tracking-[0.22em] uppercase text-foreground ${className}`}
+      aria-label="Prepare. Practice. Progress."
+    >
+      Prepare. <span className="text-foreground/90">Practice.</span>{" "}
+      <span className="brand-gradient-text">Progress.</span>
+    </span>
   );
 }
 
