@@ -409,6 +409,7 @@ function Hero() {
             A New Way to <br className="hidden sm:block" />
             <span className="brand-gradient-text">Prepare for CA.</span>
           </motion.h1>
+          <Tagline className="mt-5 block text-xs sm:text-sm" />
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
