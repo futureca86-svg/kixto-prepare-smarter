@@ -43,9 +43,34 @@ const NAV = [
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
-      <img src={logo.url} alt="Kixto" className="h-9 w-9 rounded-full" />
-      <span className="text-lg font-extrabold tracking-tight text-foreground">KIXTO</span>
+      <img src={logo.url} alt="Kixto" className="h-9 w-9 object-contain" />
+      <Wordmark className="text-lg" />
     </a>
+  );
+}
+
+function Wordmark({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`font-black tracking-[0.18em] leading-none text-foreground ${className}`}
+      aria-label="KIXTO"
+    >
+      K<span className="inline-block">I</span>
+      <span className="brand-gradient-text">X</span>
+      <span className="inline-block">T</span>O
+    </span>
+  );
+}
+
+function Tagline({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`font-bold tracking-[0.22em] uppercase text-foreground ${className}`}
+      aria-label="Prepare. Practice. Progress."
+    >
+      Prepare. <span className="text-foreground/90">Practice.</span>{" "}
+      <span className="brand-gradient-text">Progress.</span>
+    </span>
   );
 }
 
@@ -384,6 +409,7 @@ function Hero() {
             A New Way to <br className="hidden sm:block" />
             <span className="brand-gradient-text">Prepare for CA.</span>
           </motion.h1>
+          <Tagline className="mt-5 block text-xs sm:text-sm" />
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -938,9 +964,7 @@ function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Prepare. Practice. Progress.
-            </p>
+            <Tagline className="mt-4 block text-[11px]" />
           </div>
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Navigation</div>
