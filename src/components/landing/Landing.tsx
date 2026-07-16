@@ -963,9 +963,7 @@ function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Prepare. Practice. Progress.
-            </p>
+            <Tagline className="mt-4 block text-[11px]" />
           </div>
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Navigation</div>
