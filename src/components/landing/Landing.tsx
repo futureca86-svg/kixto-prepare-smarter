@@ -31,6 +31,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import logo from "@/assets/kixto-logo.png.asset.json";
+import { Link } from "@tanstack/react-router";
 
 const NAV = [
   { label: "Features", href: "#features" },
@@ -105,8 +106,13 @@ function Header() {
           ))}
         </nav>
         <div className="hidden md:block">
-          <Button className="brand-gradient-bg h-10 rounded-full px-5 text-sm font-semibold text-white shadow-none hover:opacity-90">
-            Get Started <ArrowRight className="ml-1 h-4 w-4" />
+          <Button
+            asChild
+            className="brand-gradient-bg h-10 rounded-full px-5 text-sm font-semibold text-white shadow-none hover:opacity-90"
+          >
+            <Link to="/auth">
+              Get Started <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
           </Button>
         </div>
         <button
@@ -130,8 +136,11 @@ function Header() {
                 {n.label}
               </a>
             ))}
-            <Button className="brand-gradient-bg mt-2 h-11 rounded-full text-sm font-semibold text-white hover:opacity-90">
-              Get Started
+            <Button
+              asChild
+              className="brand-gradient-bg mt-2 h-11 rounded-full text-sm font-semibold text-white hover:opacity-90"
+            >
+              <Link to="/auth">Get Started</Link>
             </Button>
           </div>
         </div>
@@ -424,8 +433,13 @@ function Hero() {
             transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
-            <Button className="brand-gradient-bg h-12 rounded-full px-6 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(37,99,235,0.6)] hover:opacity-90">
-              Get Started <ArrowRight className="ml-1.5 h-4 w-4" />
+            <Button
+              asChild
+              className="brand-gradient-bg h-12 rounded-full px-6 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(37,99,235,0.6)] hover:opacity-90"
+            >
+              <Link to="/auth">
+                Get Started <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Link>
             </Button>
             <Button
               variant="outline"
@@ -947,8 +961,13 @@ function FinalCTA() {
             Join Kixto and experience a better way to prepare for CA.
           </p>
           <div className="mt-8 flex justify-center">
-            <Button className="h-12 rounded-full bg-white px-7 text-sm font-semibold text-foreground hover:bg-white/90">
-              Get Started <ArrowRight className="ml-1.5 h-4 w-4" />
+            <Button
+              asChild
+              className="h-12 rounded-full bg-white px-7 text-sm font-semibold text-foreground hover:bg-white/90"
+            >
+              <Link to="/auth">
+                Get Started <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
