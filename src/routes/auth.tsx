@@ -402,9 +402,9 @@ function ForgotForm({ onBack }: { onBack: () => void }) {
   async function onSubmit(ev: React.FormEvent) {
     ev.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-      redirectTo: `${window.location.origin}/reset-password`,
-    });
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+  redirectTo: `${window.location.origin}/reset-password`,
+});
     setLoading(false);
     if (error) {
       toast.error(error.message);
