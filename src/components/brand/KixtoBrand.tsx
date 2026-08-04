@@ -1,5 +1,3 @@
-import logo from "@/assets/kixtologo.png.asset.json";
-
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span
@@ -23,8 +21,18 @@ export function Tagline({ className = "" }: { className?: string }) {
   );
 }
 
-export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
-  return <img src={logo.url} alt="Kixto logo" className={`${className} object-contain`} />;
+export function LogoMark({
+  className = "h-9 w-9",
+}: {
+  className?: string;
+}) {
+  return (
+    <img
+      src="/kixtologo.png"
+      alt="Kixto logo"
+      className={`${className} object-contain`}
+    />
+  );
 }
 
 export function BrandLock({ className = "" }: { className?: string }) {
