@@ -30,7 +30,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import logo from "@/assets/kixto-logo.png.asset.json";
+import logo from "@/assets/kixtologo.png.asset.json";
 import { Link } from "@tanstack/react-router";
 
 const NAV = [

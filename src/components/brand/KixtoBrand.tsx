@@ -1,4 +1,4 @@
-import logo from "@/assets/kixto-logo.png.asset.json";
+import logo from "@/assets/kixtologo.png.asset.json";
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
