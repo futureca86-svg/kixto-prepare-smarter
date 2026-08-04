@@ -30,7 +30,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import logo from "@/assets/kixtologo.png.asset.json";
+const logo = "/kixtologo.png";
 import { Link } from "@tanstack/react-router";
 
 const NAV = [
@@ -44,7 +44,7 @@ const NAV = [
 function Logo({ className = "" }: { className?: string }) {
   return (
     <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
-      <img src={logo.url} alt="Kixto" className="h-9 w-9 object-contain" />
+      <img src={logo} alt="Kixto" className="h-9 w-9 object-contain" />
       <Wordmark className="text-lg" />
     </a>
   );
@@ -240,7 +240,7 @@ function DashboardMock() {
             {/* Sidebar */}
             <div className="col-span-3 space-y-2">
               <div className="flex items-center gap-2 rounded-lg bg-white px-2 py-2 shadow-sm">
-                <img src={logo.url} alt="" className="h-5 w-5 rounded-full" />
+                <img src={logo} alt="" className="h-5 w-5 rounded-full" />
                 <div className="h-2 w-14 rounded bg-slate-200" />
               </div>
               {["Overview", "Papers", "Memory", "Planner"].map((l, i) => (
@@ -344,7 +344,7 @@ function DashboardMock() {
       >
         <div className="rounded-[22px] bg-slate-50 p-3">
           <div className="mb-2 flex items-center justify-between">
-            <img src={logo.url} alt="" className="h-5 w-5 rounded-full" />
+            <img src={logo} alt="" className="h-5 w-5 rounded-full" />
             <div className="h-1.5 w-6 rounded-full bg-slate-200" />
           </div>
           <div className="brand-gradient-bg mb-2 rounded-xl p-2.5 text-white">
@@ -541,7 +541,7 @@ function Problem() {
               </div>
               <div className="rounded-2xl border border-border bg-white/80 p-5 backdrop-blur">
                 <div className="mb-3 flex items-center gap-2">
-                  <img src={logo.url} alt="" className="h-8 w-8 rounded-full" />
+                  <img src={logo} alt="" className="h-8 w-8 rounded-full" />
                   <div>
                     <div className="text-sm font-bold">Kixto Workspace</div>
                     <div className="text-[11px] text-muted-foreground">One system. Every feature connected.</div>
