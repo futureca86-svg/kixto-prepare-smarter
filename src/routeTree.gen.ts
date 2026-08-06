@@ -13,6 +13,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedPracticePapersRouteImport } from './routes/_authenticated/practice-papers'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 
@@ -35,6 +36,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedPracticePapersRoute =
+  AuthenticatedPracticePapersRouteImport.update({
+    id: '/practice-papers',
+    path: '/practice-papers',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
@@ -52,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/practice-papers': typeof AuthenticatedPracticePapersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -59,6 +67,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/practice-papers': typeof AuthenticatedPracticePapersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -68,12 +77,25 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/practice-papers': typeof AuthenticatedPracticePapersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/reset-password' | '/dashboard' | '/onboarding'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/dashboard'
+    | '/onboarding'
+    | '/practice-papers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/reset-password' | '/dashboard' | '/onboarding'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/dashboard'
+    | '/onboarding'
+    | '/practice-papers'
   id:
     | '__root__'
     | '/'
@@ -82,6 +104,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/_authenticated/dashboard'
     | '/_authenticated/onboarding'
+    | '/_authenticated/practice-papers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -121,6 +144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/practice-papers': {
+      id: '/_authenticated/practice-papers'
+      path: '/practice-papers'
+      fullPath: '/practice-papers'
+      preLoaderRoute: typeof AuthenticatedPracticePapersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/onboarding': {
       id: '/_authenticated/onboarding'
       path: '/onboarding'
@@ -141,11 +171,13 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPracticePapersRoute: typeof AuthenticatedPracticePapersRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPracticePapersRoute: AuthenticatedPracticePapersRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -160,13 +192,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
