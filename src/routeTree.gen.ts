@@ -17,6 +17,7 @@ import { Route as AuthenticatedPracticePapersRouteImport } from './routes/_authe
 import { Route as AuthenticatedPlannerRouteImport } from './routes/_authenticated/planner'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedMemoryGuardRouteImport } from './routes/_authenticated/memory-guard'
+import { Route as AuthenticatedDownloadsRouteImport } from './routes/_authenticated/downloads'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
 
@@ -61,6 +62,11 @@ const AuthenticatedMemoryGuardRoute =
     path: '/memory-guard',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedDownloadsRoute = AuthenticatedDownloadsRouteImport.update({
+  id: '/downloads',
+  path: '/downloads',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/reset-password': typeof ResetPasswordRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/downloads': typeof AuthenticatedDownloadsRoute
   '/memory-guard': typeof AuthenticatedMemoryGuardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/planner': typeof AuthenticatedPlannerRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/reset-password': typeof ResetPasswordRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/downloads': typeof AuthenticatedDownloadsRoute
   '/memory-guard': typeof AuthenticatedMemoryGuardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/planner': typeof AuthenticatedPlannerRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/downloads': typeof AuthenticatedDownloadsRoute
   '/_authenticated/memory-guard': typeof AuthenticatedMemoryGuardRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/planner': typeof AuthenticatedPlannerRoute
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/analytics'
     | '/dashboard'
+    | '/downloads'
     | '/memory-guard'
     | '/onboarding'
     | '/planner'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/analytics'
     | '/dashboard'
+    | '/downloads'
     | '/memory-guard'
     | '/onboarding'
     | '/planner'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/_authenticated/analytics'
     | '/_authenticated/dashboard'
+    | '/_authenticated/downloads'
     | '/_authenticated/memory-guard'
     | '/_authenticated/onboarding'
     | '/_authenticated/planner'
@@ -209,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMemoryGuardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/downloads': {
+      id: '/_authenticated/downloads'
+      path: '/downloads'
+      fullPath: '/downloads'
+      preLoaderRoute: typeof AuthenticatedDownloadsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -229,6 +248,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDownloadsRoute: typeof AuthenticatedDownloadsRoute
   AuthenticatedMemoryGuardRoute: typeof AuthenticatedMemoryGuardRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedPlannerRoute: typeof AuthenticatedPlannerRoute
@@ -238,6 +258,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDownloadsRoute: AuthenticatedDownloadsRoute,
   AuthenticatedMemoryGuardRoute: AuthenticatedMemoryGuardRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedPlannerRoute: AuthenticatedPlannerRoute,
