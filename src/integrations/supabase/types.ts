@@ -123,10 +123,329 @@ export type Database = {
           },
         ]
       }
+      downloads: {
+        Row: {
+          created_at: string
+          file_url: string | null
+          id: string
+          kind: string
+          paper_id: string | null
+          subject: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_url?: string | null
+          id?: string
+          kind?: string
+          paper_id?: string | null
+          subject?: string | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          file_url?: string | null
+          id?: string
+          kind?: string
+          paper_id?: string | null
+          subject?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "downloads_paper_id_fkey"
+            columns: ["paper_id"]
+            isOneToOne: false
+            referencedRelation: "practice_papers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memory_guard_items: {
+        Row: {
+          chapter: string | null
+          created_at: string
+          id: string
+          last_reviewed_at: string | null
+          next_review_on: string
+          strength: number
+          subject: string | null
+          topic: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          last_reviewed_at?: string | null
+          next_review_on?: string
+          strength?: number
+          subject?: string | null
+          topic: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          last_reviewed_at?: string | null
+          next_review_on?: string
+          strength?: number
+          subject?: string | null
+          topic?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      memory_guard_reviews: {
+        Row: {
+          created_at: string
+          id: string
+          item_id: string | null
+          recall_score: number
+          reviewed_on: string
+          subject: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_id?: string | null
+          recall_score?: number
+          reviewed_on?: string
+          subject?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_id?: string | null
+          recall_score?: number
+          reviewed_on?: string
+          subject?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "memory_guard_reviews_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "memory_guard_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      motivational_quotes: {
+        Row: {
+          author: string
+          created_at: string
+          id: string
+          quote: string
+        }
+        Insert: {
+          author?: string
+          created_at?: string
+          id?: string
+          quote: string
+        }
+        Update: {
+          author?: string
+          created_at?: string
+          id?: string
+          quote?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          link: string | null
+          read_at: string | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      paper_attempts: {
+        Row: {
+          attempt_kind: string
+          attempted_on: string
+          chapter: string | null
+          created_at: string
+          id: string
+          paper_id: string | null
+          questions_attempted: number
+          questions_correct: number
+          subject: string | null
+          time_spent_min: number
+          topic: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          attempt_kind?: string
+          attempted_on?: string
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          paper_id?: string | null
+          questions_attempted?: number
+          questions_correct?: number
+          subject?: string | null
+          time_spent_min?: number
+          topic?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          attempt_kind?: string
+          attempted_on?: string
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          paper_id?: string | null
+          questions_attempted?: number
+          questions_correct?: number
+          subject?: string | null
+          time_spent_min?: number
+          topic?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "paper_attempts_paper_id_fkey"
+            columns: ["paper_id"]
+            isOneToOne: false
+            referencedRelation: "practice_papers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      planner_tasks: {
+        Row: {
+          chapter: string | null
+          completed_at: string | null
+          created_at: string
+          duration_min: number
+          id: string
+          priority: number
+          scheduled_date: string
+          start_time: string | null
+          status: string
+          subject: string | null
+          task_type: string
+          title: string
+          topic: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter?: string | null
+          completed_at?: string | null
+          created_at?: string
+          duration_min?: number
+          id?: string
+          priority?: number
+          scheduled_date?: string
+          start_time?: string | null
+          status?: string
+          subject?: string | null
+          task_type?: string
+          title: string
+          topic?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string | null
+          completed_at?: string | null
+          created_at?: string
+          duration_min?: number
+          id?: string
+          priority?: number
+          scheduled_date?: string
+          start_time?: string | null
+          status?: string
+          subject?: string | null
+          task_type?: string
+          title?: string
+          topic?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      practice_papers: {
+        Row: {
+          chapter: string | null
+          created_at: string
+          id: string
+          question_count: number
+          status: string
+          subject: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          question_count?: number
+          status?: string
+          subject?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          question_count?: number
+          status?: string
+          subject?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           course_code: string | null
           created_at: string
+          daily_target_minutes: number
           email: string
           full_name: string
           goals: string[]
@@ -141,6 +460,7 @@ export type Database = {
         Insert: {
           course_code?: string | null
           created_at?: string
+          daily_target_minutes?: number
           email?: string
           full_name?: string
           goals?: string[]
@@ -155,6 +475,7 @@ export type Database = {
         Update: {
           course_code?: string | null
           created_at?: string
+          daily_target_minutes?: number
           email?: string
           full_name?: string
           goals?: string[]
@@ -165,6 +486,101 @@ export type Database = {
           study_hours?: string | null
           subjects?: string[]
           updated_at?: string
+        }
+        Relationships: []
+      }
+      quote_history: {
+        Row: {
+          created_at: string
+          id: string
+          quote_id: string
+          shown_on: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          quote_id: string
+          shown_on?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          quote_id?: string
+          shown_on?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quote_history_quote_id_fkey"
+            columns: ["quote_id"]
+            isOneToOne: false
+            referencedRelation: "motivational_quotes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_sessions: {
+        Row: {
+          chapter: string | null
+          created_at: string
+          id: string
+          minutes: number
+          source: string
+          studied_on: string
+          subject: string | null
+          topic: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          minutes?: number
+          source?: string
+          studied_on?: string
+          subject?: string | null
+          topic?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          chapter?: string | null
+          created_at?: string
+          id?: string
+          minutes?: number
+          source?: string
+          studied_on?: string
+          subject?: string | null
+          topic?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_modules: {
+        Row: {
+          created_at: string
+          enabled: boolean
+          id: string
+          module: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          module: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          module?: string
+          user_id?: string
         }
         Relationships: []
       }
