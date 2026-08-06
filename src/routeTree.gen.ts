@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedPracticePapersRouteImport } from './routes/_authenticated/practice-papers'
+import { Route as AuthenticatedPlannerRouteImport } from './routes/_authenticated/planner'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedMemoryGuardRouteImport } from './routes/_authenticated/memory-guard'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -43,6 +44,11 @@ const AuthenticatedPracticePapersRoute =
     path: '/practice-papers',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedPlannerRoute = AuthenticatedPlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/memory-guard': typeof AuthenticatedMemoryGuardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/planner': typeof AuthenticatedPlannerRoute
   '/practice-papers': typeof AuthenticatedPracticePapersRoute
 }
 export interface FileRoutesByTo {
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/memory-guard': typeof AuthenticatedMemoryGuardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/planner': typeof AuthenticatedPlannerRoute
   '/practice-papers': typeof AuthenticatedPracticePapersRoute
 }
 export interface FileRoutesById {
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/memory-guard': typeof AuthenticatedMemoryGuardRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/planner': typeof AuthenticatedPlannerRoute
   '/_authenticated/practice-papers': typeof AuthenticatedPracticePapersRoute
 }
 export interface FileRouteTypes {
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/memory-guard'
     | '/onboarding'
+    | '/planner'
     | '/practice-papers'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/memory-guard'
     | '/onboarding'
+    | '/planner'
     | '/practice-papers'
   id:
     | '__root__'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/memory-guard'
     | '/_authenticated/onboarding'
+    | '/_authenticated/planner'
     | '/_authenticated/practice-papers'
   fileRoutesById: FileRoutesById
 }
@@ -164,6 +176,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPracticePapersRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/planner': {
+      id: '/_authenticated/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof AuthenticatedPlannerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/onboarding': {
       id: '/_authenticated/onboarding'
       path: '/onboarding'
@@ -192,6 +211,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedMemoryGuardRoute: typeof AuthenticatedMemoryGuardRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPlannerRoute: typeof AuthenticatedPlannerRoute
   AuthenticatedPracticePapersRoute: typeof AuthenticatedPracticePapersRoute
 }
 
@@ -199,6 +219,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedMemoryGuardRoute: AuthenticatedMemoryGuardRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPlannerRoute: AuthenticatedPlannerRoute,
   AuthenticatedPracticePapersRoute: AuthenticatedPracticePapersRoute,
 }
 
