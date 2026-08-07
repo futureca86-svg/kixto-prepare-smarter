@@ -164,17 +164,25 @@ export function useDashboard() {
 
   useEffect(() => {
     if (!userId) return;
-    const channel = supabase.channel(`dashboard-${userId}`);
-    for (const table of REALTIME_TABLES) {
-      channel.on(
-        "postgres_changes",
-        { event: "*", schema: "public", table, filter: `user_id=eq.${userId}` },
-        () => {
-          queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-        },
-      );
+    // Unique topic per hook instance: several components use useDashboard(),
+    // and a shared topic makes supabase reuse an already-subscribed channel,
+    // which throws "cannot add `postgres_changes` callbacks after subscribe()".
+    const topic = `dashboard-${userId}-${Math.random().toString(36).slice(2)}`;
+    const channel = supabase.channel(topic);
+    try {
+      for (const table of REALTIME_TABLES) {
+        channel.on(
+          "postgres_changes",
+          { event: "*", schema: "public", table, filter: `user_id=eq.${userId}` },
+          () => {
+            queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+          },
+        );
+      }
+      channel.subscribe();
+    } catch (error) {
+      console.error("[useDashboard] realtime subscription failed", error);
     }
-    channel.subscribe();
     return () => {
       supabase.removeChannel(channel);
     };
