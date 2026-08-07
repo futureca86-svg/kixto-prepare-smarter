@@ -63,7 +63,7 @@ export function Panel({
           {action}
         </div>
       )}
-      {children}
+      <WidgetBoundary name={typeof title === "string" ? title : "panel"}>{children}</WidgetBoundary>
     </Card>
   );
 }
