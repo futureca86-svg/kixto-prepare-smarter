@@ -1,26 +1,14 @@
-import { Component, type ErrorInfo, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Card } from "@/components/ui/card";
+import { ErrorBoundary } from "@/components/system/ErrorBoundary";
 
-export class WidgetBoundary extends Component<
-  { name?: string; children: ReactNode },
-  { failed: boolean }
-> {
-  state = { failed: false };
-
-  static getDerivedStateFromError() {
-    return { failed: true };
-  }
-
-  override componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error(`[Widget: ${this.props.name ?? "unknown"}]`, error, info.componentStack);
-  }
-
-  override render() {
-    if (this.state.failed) {
-      return <p className="px-1 py-6 text-sm text-muted-foreground">Unable to load this section.</p>;
-    }
-    return this.props.children;
-  }
+/** Per-widget boundary: one broken widget never breaks the page. */
+export function WidgetBoundary({ name, children }: { name?: string; children: ReactNode }) {
+  return (
+    <ErrorBoundary name={name ?? "widget"} compact description="This section couldn't be loaded.">
+      {children}
+    </ErrorBoundary>
+  );
 }
 
 export function EmptyState({

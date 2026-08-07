@@ -164,6 +164,60 @@ export type Database = {
           },
         ]
       }
+      error_logs: {
+        Row: {
+          browser: string | null
+          code: string | null
+          component: string | null
+          created_at: string
+          device: string | null
+          fn: string | null
+          id: string
+          message: string
+          metadata: Json
+          module: string | null
+          network_status: string | null
+          page: string | null
+          severity: string
+          stack: string | null
+          user_id: string | null
+        }
+        Insert: {
+          browser?: string | null
+          code?: string | null
+          component?: string | null
+          created_at?: string
+          device?: string | null
+          fn?: string | null
+          id?: string
+          message: string
+          metadata?: Json
+          module?: string | null
+          network_status?: string | null
+          page?: string | null
+          severity?: string
+          stack?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          browser?: string | null
+          code?: string | null
+          component?: string | null
+          created_at?: string
+          device?: string | null
+          fn?: string | null
+          id?: string
+          message?: string
+          metadata?: Json
+          module?: string | null
+          network_status?: string | null
+          page?: string | null
+          severity?: string
+          stack?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       memory_guard_items: {
         Row: {
           chapter: string | null
