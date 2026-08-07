@@ -1,5 +1,27 @@
-import type { ReactNode } from "react";
+import { Component, type ErrorInfo, type ReactNode } from "react";
 import { Card } from "@/components/ui/card";
+
+export class WidgetBoundary extends Component<
+  { name?: string; children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  override componentDidCatch(error: Error, info: ErrorInfo) {
+    console.error(`[Widget: ${this.props.name ?? "unknown"}]`, error, info.componentStack);
+  }
+
+  override render() {
+    if (this.state.failed) {
+      return <p className="px-1 py-6 text-sm text-muted-foreground">Unable to load this section.</p>;
+    }
+    return this.props.children;
+  }
+}
 
 export function EmptyState({
   icon,
@@ -41,7 +63,7 @@ export function Panel({
           {action}
         </div>
       )}
-      {children}
+      <WidgetBoundary name={typeof title === "string" ? title : "panel"}>{children}</WidgetBoundary>
     </Card>
   );
 }
