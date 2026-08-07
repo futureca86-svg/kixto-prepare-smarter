@@ -6,6 +6,7 @@ import {
   Bell,
   Brain,
   CalendarRange,
+  Bug,
   Download,
   FileText,
   LayoutDashboard,
