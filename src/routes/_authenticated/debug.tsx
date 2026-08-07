@@ -34,12 +34,12 @@ type LogRow = {
   component: string | null;
   fn: string | null;
   severity: string | null;
-  kind: string | null;
+  code: string | null;
   message: string;
   stack: string | null;
   browser: string | null;
   device: string | null;
-  online: boolean | null;
+  network_status: string | null;
 };
 
 function DebugPanel() {
@@ -56,8 +56,8 @@ function DebugPanel() {
             .select("*")
             .order("created_at", { ascending: false })
             .limit(100),
-        { module: "debug", fn: "errorLogs", fallback: [] as LogRow[] },
-      )) as LogRow[],
+        { module: "debug", fn: "errorLogs" },
+      )) as unknown as LogRow[],
   });
 
   return (
@@ -93,8 +93,8 @@ function DebugPanel() {
                       row.page,
                       row.component,
                       row.fn,
-                      row.kind,
-                      row.online === false ? "offline" : null,
+                      row.code,
+                      row.network_status,
                       row.device,
                     ]
                       .filter(Boolean)
