@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import {
@@ -41,6 +41,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { BrandLock } from "@/components/brand/KixtoBrand";
 import { markAllNotificationsRead, useAllowedModules, useDashboard, type ModuleKey } from "@/lib/dashboard";
 import { formatDistanceToNow } from "date-fns";
+import { ModuleBoundary } from "@/components/system/ErrorBoundary";
+import { notify } from "@/lib/system/notify";
+import { useIsAdmin } from "@/lib/system/roles";
 
 const NAV: { key: ModuleKey; label: string; to: string; icon: typeof LayoutDashboard }[] = [
   { key: "dashboard", label: "Dashboard", to: "/dashboard", icon: LayoutDashboard },
@@ -106,21 +109,34 @@ export function AppShell({
   const queryClient = useQueryClient();
   const { data } = useDashboard();
   const allowed = useAllowedModules(data);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { isAdmin } = useIsAdmin();
+  const [search, setSearch] = useState("");
+  const searchResults = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return [];
+    return NAV.filter((n) => allowed.includes(n.key) && n.label.toLowerCase().includes(q));
+  }, [search, allowed]);
   const notifications = data?.notifications ?? [];
   const unread = notifications.filter((n) => !n.read_at).length;
-  const name = data?.profile?.full_name?.trim() || "there";
+  const name = data?.profile?.full_name?.trim() ?? "";
   const initials = name
     .split(" ")
-    .map((p) => p[0])
+    .map((p) => p?.[0] ?? "")
     .join("")
     .slice(0, 2)
     .toUpperCase();
 
   async function signOut() {
-    await queryClient.cancelQueries();
-    queryClient.clear();
-    await supabase.auth.signOut();
-    navigate({ to: "/auth", replace: true });
+    try {
+      await queryClient.cancelQueries();
+      queryClient.clear();
+      await supabase.auth.signOut();
+    } catch (error) {
+      notify.fromError(error, { module: "auth", fn: "signOut", fallback: "Couldn't sign out cleanly." });
+    } finally {
+      navigate({ to: "/auth", replace: true });
+    }
   }
 
   return (
@@ -139,7 +155,31 @@ export function AppShell({
             <div className="flex shrink-0 items-center gap-2">
               <div className="relative hidden md:block">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input placeholder="Search" className="h-10 w-48 rounded-full pl-9 lg:w-64" aria-label="Search" />
+                <Input
+                  placeholder="Search"
+                  className="h-10 w-48 rounded-full pl-9 lg:w-64"
+                  aria-label="Search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                {search.trim() ? (
+                  <div className="absolute right-0 top-12 z-50 w-64 rounded-2xl border border-border/60 bg-popover p-2 shadow-lg">
+                    {searchResults.length === 0 ? (
+                      <p className="px-3 py-2 text-sm text-muted-foreground">No matching results found.</p>
+                    ) : (
+                      searchResults.map((r) => (
+                        <Link
+                          key={r.key}
+                          to={r.to}
+                          onClick={() => setSearch("")}
+                          className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm hover:bg-accent"
+                        >
+                          <r.icon className="h-4 w-4" /> {r.label}
+                        </Link>
+                      ))
+                    )}
+                  </div>
+                ) : null}
               </div>
               <Popover>
                 <PopoverTrigger asChild>
@@ -205,6 +245,13 @@ export function AppShell({
                       <User className="mr-2 h-4 w-4" /> Profile & settings
                     </Link>
                   </DropdownMenuItem>
+                  {isAdmin ? (
+                    <DropdownMenuItem asChild>
+                      <Link to="/debug" className="cursor-pointer">
+                        <Bug className="mr-2 h-4 w-4" /> Debug panel
+                      </Link>
+                    </DropdownMenuItem>
+                  ) : null}
                   <DropdownMenuItem onClick={signOut} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" /> Sign out
                   </DropdownMenuItem>
@@ -212,7 +259,12 @@ export function AppShell({
               </DropdownMenu>
             </div>
           </header>
-          <main className="min-w-0 flex-1 px-4 py-6 sm:px-6">{children}</main>
+          <main className="min-w-0 flex-1 px-4 py-6 sm:px-6">
+            {/* Per-module boundary: a crash here keeps the sidebar and topbar alive. */}
+            <ModuleBoundary key={pathname} name={pathname.replace("/", "") || "dashboard"}>
+              {children}
+            </ModuleBoundary>
+          </main>
         </div>
       </div>
     </SidebarProvider>
