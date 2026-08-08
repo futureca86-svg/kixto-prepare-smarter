@@ -25,6 +25,24 @@ import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authentica
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedAdminSupportRouteImport } from './routes/_authenticated/admin/support'
+import { Route as AuthenticatedAdminSubscriptionsRouteImport } from './routes/_authenticated/admin/subscriptions'
+import { Route as AuthenticatedAdminStorageRouteImport } from './routes/_authenticated/admin/storage'
+import { Route as AuthenticatedAdminSecurityRouteImport } from './routes/_authenticated/admin/security'
+import { Route as AuthenticatedAdminRolesRouteImport } from './routes/_authenticated/admin/roles'
+import { Route as AuthenticatedAdminReportsRouteImport } from './routes/_authenticated/admin/reports'
+import { Route as AuthenticatedAdminQuestionsRouteImport } from './routes/_authenticated/admin/questions'
+import { Route as AuthenticatedAdminPlannerRouteImport } from './routes/_authenticated/admin/planner'
+import { Route as AuthenticatedAdminPaymentsRouteImport } from './routes/_authenticated/admin/payments'
+import { Route as AuthenticatedAdminPapersRouteImport } from './routes/_authenticated/admin/papers'
+import { Route as AuthenticatedAdminNotificationsRouteImport } from './routes/_authenticated/admin/notifications'
+import { Route as AuthenticatedAdminMemoryRouteImport } from './routes/_authenticated/admin/memory'
+import { Route as AuthenticatedAdminJobsRouteImport } from './routes/_authenticated/admin/jobs'
+import { Route as AuthenticatedAdminErrorsRouteImport } from './routes/_authenticated/admin/errors'
+import { Route as AuthenticatedAdminEmailRouteImport } from './routes/_authenticated/admin/email'
+import { Route as AuthenticatedAdminDownloadsRouteImport } from './routes/_authenticated/admin/downloads'
+import { Route as AuthenticatedAdminCoursesRouteImport } from './routes/_authenticated/admin/courses'
+import { Route as AuthenticatedAdminAuditRouteImport } from './routes/_authenticated/admin/audit'
 import { Route as AuthenticatedAdminAdminsRouteImport } from './routes/_authenticated/admin/admins'
 
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
@@ -108,6 +126,110 @@ const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AuthenticatedAdminRouteRoute,
 } as any)
+const AuthenticatedAdminSupportRoute =
+  AuthenticatedAdminSupportRouteImport.update({
+    id: '/support',
+    path: '/support',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminSubscriptionsRoute =
+  AuthenticatedAdminSubscriptionsRouteImport.update({
+    id: '/subscriptions',
+    path: '/subscriptions',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminStorageRoute =
+  AuthenticatedAdminStorageRouteImport.update({
+    id: '/storage',
+    path: '/storage',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminSecurityRoute =
+  AuthenticatedAdminSecurityRouteImport.update({
+    id: '/security',
+    path: '/security',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminRolesRoute = AuthenticatedAdminRolesRouteImport.update({
+  id: '/roles',
+  path: '/roles',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminReportsRoute =
+  AuthenticatedAdminReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminQuestionsRoute =
+  AuthenticatedAdminQuestionsRouteImport.update({
+    id: '/questions',
+    path: '/questions',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminPlannerRoute =
+  AuthenticatedAdminPlannerRouteImport.update({
+    id: '/planner',
+    path: '/planner',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminPaymentsRoute =
+  AuthenticatedAdminPaymentsRouteImport.update({
+    id: '/payments',
+    path: '/payments',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminPapersRoute =
+  AuthenticatedAdminPapersRouteImport.update({
+    id: '/papers',
+    path: '/papers',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminNotificationsRoute =
+  AuthenticatedAdminNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminMemoryRoute =
+  AuthenticatedAdminMemoryRouteImport.update({
+    id: '/memory',
+    path: '/memory',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminJobsRoute = AuthenticatedAdminJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminErrorsRoute =
+  AuthenticatedAdminErrorsRouteImport.update({
+    id: '/errors',
+    path: '/errors',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminEmailRoute = AuthenticatedAdminEmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminDownloadsRoute =
+  AuthenticatedAdminDownloadsRouteImport.update({
+    id: '/downloads',
+    path: '/downloads',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminCoursesRoute =
+  AuthenticatedAdminCoursesRouteImport.update({
+    id: '/courses',
+    path: '/courses',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminAuditRoute = AuthenticatedAdminAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
 const AuthenticatedAdminAdminsRoute =
   AuthenticatedAdminAdminsRouteImport.update({
     id: '/admins',
@@ -130,6 +252,24 @@ export interface FileRoutesByFullPath {
   '/practice-papers': typeof AuthenticatedPracticePapersRoute
   '/settings': typeof AuthenticatedSettingsRoute
   '/admin/admins': typeof AuthenticatedAdminAdminsRoute
+  '/admin/audit': typeof AuthenticatedAdminAuditRoute
+  '/admin/courses': typeof AuthenticatedAdminCoursesRoute
+  '/admin/downloads': typeof AuthenticatedAdminDownloadsRoute
+  '/admin/email': typeof AuthenticatedAdminEmailRoute
+  '/admin/errors': typeof AuthenticatedAdminErrorsRoute
+  '/admin/jobs': typeof AuthenticatedAdminJobsRoute
+  '/admin/memory': typeof AuthenticatedAdminMemoryRoute
+  '/admin/notifications': typeof AuthenticatedAdminNotificationsRoute
+  '/admin/papers': typeof AuthenticatedAdminPapersRoute
+  '/admin/payments': typeof AuthenticatedAdminPaymentsRoute
+  '/admin/planner': typeof AuthenticatedAdminPlannerRoute
+  '/admin/questions': typeof AuthenticatedAdminQuestionsRoute
+  '/admin/reports': typeof AuthenticatedAdminReportsRoute
+  '/admin/roles': typeof AuthenticatedAdminRolesRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
+  '/admin/storage': typeof AuthenticatedAdminStorageRoute
+  '/admin/subscriptions': typeof AuthenticatedAdminSubscriptionsRoute
+  '/admin/support': typeof AuthenticatedAdminSupportRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
@@ -147,6 +287,24 @@ export interface FileRoutesByTo {
   '/practice-papers': typeof AuthenticatedPracticePapersRoute
   '/settings': typeof AuthenticatedSettingsRoute
   '/admin/admins': typeof AuthenticatedAdminAdminsRoute
+  '/admin/audit': typeof AuthenticatedAdminAuditRoute
+  '/admin/courses': typeof AuthenticatedAdminCoursesRoute
+  '/admin/downloads': typeof AuthenticatedAdminDownloadsRoute
+  '/admin/email': typeof AuthenticatedAdminEmailRoute
+  '/admin/errors': typeof AuthenticatedAdminErrorsRoute
+  '/admin/jobs': typeof AuthenticatedAdminJobsRoute
+  '/admin/memory': typeof AuthenticatedAdminMemoryRoute
+  '/admin/notifications': typeof AuthenticatedAdminNotificationsRoute
+  '/admin/papers': typeof AuthenticatedAdminPapersRoute
+  '/admin/payments': typeof AuthenticatedAdminPaymentsRoute
+  '/admin/planner': typeof AuthenticatedAdminPlannerRoute
+  '/admin/questions': typeof AuthenticatedAdminQuestionsRoute
+  '/admin/reports': typeof AuthenticatedAdminReportsRoute
+  '/admin/roles': typeof AuthenticatedAdminRolesRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
+  '/admin/storage': typeof AuthenticatedAdminStorageRoute
+  '/admin/subscriptions': typeof AuthenticatedAdminSubscriptionsRoute
+  '/admin/support': typeof AuthenticatedAdminSupportRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
@@ -167,6 +325,24 @@ export interface FileRoutesById {
   '/_authenticated/practice-papers': typeof AuthenticatedPracticePapersRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/admin/admins': typeof AuthenticatedAdminAdminsRoute
+  '/_authenticated/admin/audit': typeof AuthenticatedAdminAuditRoute
+  '/_authenticated/admin/courses': typeof AuthenticatedAdminCoursesRoute
+  '/_authenticated/admin/downloads': typeof AuthenticatedAdminDownloadsRoute
+  '/_authenticated/admin/email': typeof AuthenticatedAdminEmailRoute
+  '/_authenticated/admin/errors': typeof AuthenticatedAdminErrorsRoute
+  '/_authenticated/admin/jobs': typeof AuthenticatedAdminJobsRoute
+  '/_authenticated/admin/memory': typeof AuthenticatedAdminMemoryRoute
+  '/_authenticated/admin/notifications': typeof AuthenticatedAdminNotificationsRoute
+  '/_authenticated/admin/papers': typeof AuthenticatedAdminPapersRoute
+  '/_authenticated/admin/payments': typeof AuthenticatedAdminPaymentsRoute
+  '/_authenticated/admin/planner': typeof AuthenticatedAdminPlannerRoute
+  '/_authenticated/admin/questions': typeof AuthenticatedAdminQuestionsRoute
+  '/_authenticated/admin/reports': typeof AuthenticatedAdminReportsRoute
+  '/_authenticated/admin/roles': typeof AuthenticatedAdminRolesRoute
+  '/_authenticated/admin/security': typeof AuthenticatedAdminSecurityRoute
+  '/_authenticated/admin/storage': typeof AuthenticatedAdminStorageRoute
+  '/_authenticated/admin/subscriptions': typeof AuthenticatedAdminSubscriptionsRoute
+  '/_authenticated/admin/support': typeof AuthenticatedAdminSupportRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
@@ -187,6 +363,24 @@ export interface FileRouteTypes {
     | '/practice-papers'
     | '/settings'
     | '/admin/admins'
+    | '/admin/audit'
+    | '/admin/courses'
+    | '/admin/downloads'
+    | '/admin/email'
+    | '/admin/errors'
+    | '/admin/jobs'
+    | '/admin/memory'
+    | '/admin/notifications'
+    | '/admin/papers'
+    | '/admin/payments'
+    | '/admin/planner'
+    | '/admin/questions'
+    | '/admin/reports'
+    | '/admin/roles'
+    | '/admin/security'
+    | '/admin/storage'
+    | '/admin/subscriptions'
+    | '/admin/support'
     | '/admin/users'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -204,6 +398,24 @@ export interface FileRouteTypes {
     | '/practice-papers'
     | '/settings'
     | '/admin/admins'
+    | '/admin/audit'
+    | '/admin/courses'
+    | '/admin/downloads'
+    | '/admin/email'
+    | '/admin/errors'
+    | '/admin/jobs'
+    | '/admin/memory'
+    | '/admin/notifications'
+    | '/admin/papers'
+    | '/admin/payments'
+    | '/admin/planner'
+    | '/admin/questions'
+    | '/admin/reports'
+    | '/admin/roles'
+    | '/admin/security'
+    | '/admin/storage'
+    | '/admin/subscriptions'
+    | '/admin/support'
     | '/admin/users'
     | '/admin'
   id:
@@ -223,6 +435,24 @@ export interface FileRouteTypes {
     | '/_authenticated/practice-papers'
     | '/_authenticated/settings'
     | '/_authenticated/admin/admins'
+    | '/_authenticated/admin/audit'
+    | '/_authenticated/admin/courses'
+    | '/_authenticated/admin/downloads'
+    | '/_authenticated/admin/email'
+    | '/_authenticated/admin/errors'
+    | '/_authenticated/admin/jobs'
+    | '/_authenticated/admin/memory'
+    | '/_authenticated/admin/notifications'
+    | '/_authenticated/admin/papers'
+    | '/_authenticated/admin/payments'
+    | '/_authenticated/admin/planner'
+    | '/_authenticated/admin/questions'
+    | '/_authenticated/admin/reports'
+    | '/_authenticated/admin/roles'
+    | '/_authenticated/admin/security'
+    | '/_authenticated/admin/storage'
+    | '/_authenticated/admin/subscriptions'
+    | '/_authenticated/admin/support'
     | '/_authenticated/admin/users'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
@@ -348,6 +578,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/support': {
+      id: '/_authenticated/admin/support'
+      path: '/support'
+      fullPath: '/admin/support'
+      preLoaderRoute: typeof AuthenticatedAdminSupportRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/subscriptions': {
+      id: '/_authenticated/admin/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/admin/subscriptions'
+      preLoaderRoute: typeof AuthenticatedAdminSubscriptionsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/storage': {
+      id: '/_authenticated/admin/storage'
+      path: '/storage'
+      fullPath: '/admin/storage'
+      preLoaderRoute: typeof AuthenticatedAdminStorageRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/security': {
+      id: '/_authenticated/admin/security'
+      path: '/security'
+      fullPath: '/admin/security'
+      preLoaderRoute: typeof AuthenticatedAdminSecurityRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/roles': {
+      id: '/_authenticated/admin/roles'
+      path: '/roles'
+      fullPath: '/admin/roles'
+      preLoaderRoute: typeof AuthenticatedAdminRolesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/reports': {
+      id: '/_authenticated/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AuthenticatedAdminReportsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/questions': {
+      id: '/_authenticated/admin/questions'
+      path: '/questions'
+      fullPath: '/admin/questions'
+      preLoaderRoute: typeof AuthenticatedAdminQuestionsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/planner': {
+      id: '/_authenticated/admin/planner'
+      path: '/planner'
+      fullPath: '/admin/planner'
+      preLoaderRoute: typeof AuthenticatedAdminPlannerRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/payments': {
+      id: '/_authenticated/admin/payments'
+      path: '/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AuthenticatedAdminPaymentsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/papers': {
+      id: '/_authenticated/admin/papers'
+      path: '/papers'
+      fullPath: '/admin/papers'
+      preLoaderRoute: typeof AuthenticatedAdminPapersRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/notifications': {
+      id: '/_authenticated/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AuthenticatedAdminNotificationsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/memory': {
+      id: '/_authenticated/admin/memory'
+      path: '/memory'
+      fullPath: '/admin/memory'
+      preLoaderRoute: typeof AuthenticatedAdminMemoryRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/jobs': {
+      id: '/_authenticated/admin/jobs'
+      path: '/jobs'
+      fullPath: '/admin/jobs'
+      preLoaderRoute: typeof AuthenticatedAdminJobsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/errors': {
+      id: '/_authenticated/admin/errors'
+      path: '/errors'
+      fullPath: '/admin/errors'
+      preLoaderRoute: typeof AuthenticatedAdminErrorsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/email': {
+      id: '/_authenticated/admin/email'
+      path: '/email'
+      fullPath: '/admin/email'
+      preLoaderRoute: typeof AuthenticatedAdminEmailRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/downloads': {
+      id: '/_authenticated/admin/downloads'
+      path: '/downloads'
+      fullPath: '/admin/downloads'
+      preLoaderRoute: typeof AuthenticatedAdminDownloadsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/courses': {
+      id: '/_authenticated/admin/courses'
+      path: '/courses'
+      fullPath: '/admin/courses'
+      preLoaderRoute: typeof AuthenticatedAdminCoursesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/audit': {
+      id: '/_authenticated/admin/audit'
+      path: '/audit'
+      fullPath: '/admin/audit'
+      preLoaderRoute: typeof AuthenticatedAdminAuditRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/admins': {
       id: '/_authenticated/admin/admins'
       path: '/admins'
@@ -360,6 +716,24 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminAdminsRoute: typeof AuthenticatedAdminAdminsRoute
+  AuthenticatedAdminAuditRoute: typeof AuthenticatedAdminAuditRoute
+  AuthenticatedAdminCoursesRoute: typeof AuthenticatedAdminCoursesRoute
+  AuthenticatedAdminDownloadsRoute: typeof AuthenticatedAdminDownloadsRoute
+  AuthenticatedAdminEmailRoute: typeof AuthenticatedAdminEmailRoute
+  AuthenticatedAdminErrorsRoute: typeof AuthenticatedAdminErrorsRoute
+  AuthenticatedAdminJobsRoute: typeof AuthenticatedAdminJobsRoute
+  AuthenticatedAdminMemoryRoute: typeof AuthenticatedAdminMemoryRoute
+  AuthenticatedAdminNotificationsRoute: typeof AuthenticatedAdminNotificationsRoute
+  AuthenticatedAdminPapersRoute: typeof AuthenticatedAdminPapersRoute
+  AuthenticatedAdminPaymentsRoute: typeof AuthenticatedAdminPaymentsRoute
+  AuthenticatedAdminPlannerRoute: typeof AuthenticatedAdminPlannerRoute
+  AuthenticatedAdminQuestionsRoute: typeof AuthenticatedAdminQuestionsRoute
+  AuthenticatedAdminReportsRoute: typeof AuthenticatedAdminReportsRoute
+  AuthenticatedAdminRolesRoute: typeof AuthenticatedAdminRolesRoute
+  AuthenticatedAdminSecurityRoute: typeof AuthenticatedAdminSecurityRoute
+  AuthenticatedAdminStorageRoute: typeof AuthenticatedAdminStorageRoute
+  AuthenticatedAdminSubscriptionsRoute: typeof AuthenticatedAdminSubscriptionsRoute
+  AuthenticatedAdminSupportRoute: typeof AuthenticatedAdminSupportRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
@@ -367,6 +741,24 @@ interface AuthenticatedAdminRouteRouteChildren {
 const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
   {
     AuthenticatedAdminAdminsRoute: AuthenticatedAdminAdminsRoute,
+    AuthenticatedAdminAuditRoute: AuthenticatedAdminAuditRoute,
+    AuthenticatedAdminCoursesRoute: AuthenticatedAdminCoursesRoute,
+    AuthenticatedAdminDownloadsRoute: AuthenticatedAdminDownloadsRoute,
+    AuthenticatedAdminEmailRoute: AuthenticatedAdminEmailRoute,
+    AuthenticatedAdminErrorsRoute: AuthenticatedAdminErrorsRoute,
+    AuthenticatedAdminJobsRoute: AuthenticatedAdminJobsRoute,
+    AuthenticatedAdminMemoryRoute: AuthenticatedAdminMemoryRoute,
+    AuthenticatedAdminNotificationsRoute: AuthenticatedAdminNotificationsRoute,
+    AuthenticatedAdminPapersRoute: AuthenticatedAdminPapersRoute,
+    AuthenticatedAdminPaymentsRoute: AuthenticatedAdminPaymentsRoute,
+    AuthenticatedAdminPlannerRoute: AuthenticatedAdminPlannerRoute,
+    AuthenticatedAdminQuestionsRoute: AuthenticatedAdminQuestionsRoute,
+    AuthenticatedAdminReportsRoute: AuthenticatedAdminReportsRoute,
+    AuthenticatedAdminRolesRoute: AuthenticatedAdminRolesRoute,
+    AuthenticatedAdminSecurityRoute: AuthenticatedAdminSecurityRoute,
+    AuthenticatedAdminStorageRoute: AuthenticatedAdminStorageRoute,
+    AuthenticatedAdminSubscriptionsRoute: AuthenticatedAdminSubscriptionsRoute,
+    AuthenticatedAdminSupportRoute: AuthenticatedAdminSupportRoute,
     AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
     AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
   }
