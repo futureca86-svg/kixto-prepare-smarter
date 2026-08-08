@@ -40,6 +40,7 @@ import { Route as AuthenticatedAdminNotificationsRouteImport } from './routes/_a
 import { Route as AuthenticatedAdminMemoryRouteImport } from './routes/_authenticated/admin/memory'
 import { Route as AuthenticatedAdminJobsRouteImport } from './routes/_authenticated/admin/jobs'
 import { Route as AuthenticatedAdminHealthRouteImport } from './routes/_authenticated/admin/health'
+import { Route as AuthenticatedAdminFlagsRouteImport } from './routes/_authenticated/admin/flags'
 import { Route as AuthenticatedAdminErrorsRouteImport } from './routes/_authenticated/admin/errors'
 import { Route as AuthenticatedAdminEmailRouteImport } from './routes/_authenticated/admin/email'
 import { Route as AuthenticatedAdminDownloadsRouteImport } from './routes/_authenticated/admin/downloads'
@@ -219,6 +220,11 @@ const AuthenticatedAdminHealthRoute =
     path: '/health',
     getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
+const AuthenticatedAdminFlagsRoute = AuthenticatedAdminFlagsRouteImport.update({
+  id: '/flags',
+  path: '/flags',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
 const AuthenticatedAdminErrorsRoute =
   AuthenticatedAdminErrorsRouteImport.update({
     id: '/errors',
@@ -295,6 +301,7 @@ export interface FileRoutesByFullPath {
   '/admin/downloads': typeof AuthenticatedAdminDownloadsRoute
   '/admin/email': typeof AuthenticatedAdminEmailRoute
   '/admin/errors': typeof AuthenticatedAdminErrorsRoute
+  '/admin/flags': typeof AuthenticatedAdminFlagsRoute
   '/admin/health': typeof AuthenticatedAdminHealthRoute
   '/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/admin/memory': typeof AuthenticatedAdminMemoryRoute
@@ -335,6 +342,7 @@ export interface FileRoutesByTo {
   '/admin/downloads': typeof AuthenticatedAdminDownloadsRoute
   '/admin/email': typeof AuthenticatedAdminEmailRoute
   '/admin/errors': typeof AuthenticatedAdminErrorsRoute
+  '/admin/flags': typeof AuthenticatedAdminFlagsRoute
   '/admin/health': typeof AuthenticatedAdminHealthRoute
   '/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/admin/memory': typeof AuthenticatedAdminMemoryRoute
@@ -378,6 +386,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/downloads': typeof AuthenticatedAdminDownloadsRoute
   '/_authenticated/admin/email': typeof AuthenticatedAdminEmailRoute
   '/_authenticated/admin/errors': typeof AuthenticatedAdminErrorsRoute
+  '/_authenticated/admin/flags': typeof AuthenticatedAdminFlagsRoute
   '/_authenticated/admin/health': typeof AuthenticatedAdminHealthRoute
   '/_authenticated/admin/jobs': typeof AuthenticatedAdminJobsRoute
   '/_authenticated/admin/memory': typeof AuthenticatedAdminMemoryRoute
@@ -421,6 +430,7 @@ export interface FileRouteTypes {
     | '/admin/downloads'
     | '/admin/email'
     | '/admin/errors'
+    | '/admin/flags'
     | '/admin/health'
     | '/admin/jobs'
     | '/admin/memory'
@@ -461,6 +471,7 @@ export interface FileRouteTypes {
     | '/admin/downloads'
     | '/admin/email'
     | '/admin/errors'
+    | '/admin/flags'
     | '/admin/health'
     | '/admin/jobs'
     | '/admin/memory'
@@ -503,6 +514,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/downloads'
     | '/_authenticated/admin/email'
     | '/_authenticated/admin/errors'
+    | '/_authenticated/admin/flags'
     | '/_authenticated/admin/health'
     | '/_authenticated/admin/jobs'
     | '/_authenticated/admin/memory'
@@ -748,6 +760,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminHealthRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/flags': {
+      id: '/_authenticated/admin/flags'
+      path: '/flags'
+      fullPath: '/admin/flags'
+      preLoaderRoute: typeof AuthenticatedAdminFlagsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/errors': {
       id: '/_authenticated/admin/errors'
       path: '/errors'
@@ -824,6 +843,7 @@ interface AuthenticatedAdminRouteRouteChildren {
   AuthenticatedAdminDownloadsRoute: typeof AuthenticatedAdminDownloadsRoute
   AuthenticatedAdminEmailRoute: typeof AuthenticatedAdminEmailRoute
   AuthenticatedAdminErrorsRoute: typeof AuthenticatedAdminErrorsRoute
+  AuthenticatedAdminFlagsRoute: typeof AuthenticatedAdminFlagsRoute
   AuthenticatedAdminHealthRoute: typeof AuthenticatedAdminHealthRoute
   AuthenticatedAdminJobsRoute: typeof AuthenticatedAdminJobsRoute
   AuthenticatedAdminMemoryRoute: typeof AuthenticatedAdminMemoryRoute
@@ -854,6 +874,7 @@ const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren
     AuthenticatedAdminDownloadsRoute: AuthenticatedAdminDownloadsRoute,
     AuthenticatedAdminEmailRoute: AuthenticatedAdminEmailRoute,
     AuthenticatedAdminErrorsRoute: AuthenticatedAdminErrorsRoute,
+    AuthenticatedAdminFlagsRoute: AuthenticatedAdminFlagsRoute,
     AuthenticatedAdminHealthRoute: AuthenticatedAdminHealthRoute,
     AuthenticatedAdminJobsRoute: AuthenticatedAdminJobsRoute,
     AuthenticatedAdminMemoryRoute: AuthenticatedAdminMemoryRoute,
